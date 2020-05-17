@@ -7,14 +7,14 @@ without the lines that are in between the `:SPOILERS BEGIN:` and the
 It uses stdin and stdout so that it can be easily integrated in bash 
 scripting, for instance:
 ```bash
-$ <my_file.tex | python despoilerizer.py | pdflatex
+$ <my_file.tex | python -m despoilerizer | pdflatex
 ```
 
 You can also redefine the tags:
 
 ```bash
 $ <my_file.tex | \
-  python despoilerizer.py --begin="# spoiler" --end="# unspoiler" | \
+  python -m despoilerizer --begin="# spoiler" --end="# unspoiler" | \
   pdflatex
 ```
 
