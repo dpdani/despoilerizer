@@ -1,0 +1,19 @@
+#!/usr/bin/make -f
+
+# This is an example Makefile which makes use of despoilerizer.
+# The command `nospoiler' builds a despoilerized version of
+# the LaTeX file $(source_name).
+
+.PHONY: spoiler nospoiler all
+
+source_name = some-file
+source = $(source_name).tex
+despoilerizer = python -m despoilerizer
+
+all: spoiler nospoiler
+
+spoiler:
+	xelatex -synctex=1 -interaction=nonstopmode $(source)
+
+nospoiler:
+	cat $(source) | $(despoilerizer) | pdflatex -synctex=1 -jobname=$(source_name)_no_spoilers
